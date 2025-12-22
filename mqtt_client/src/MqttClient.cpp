@@ -28,6 +28,7 @@ SOFTWARE.
 #include <algorithm>
 #include <cstdint>
 #include <cstring>
+#include <format>
 #include <memory>
 #include <stdexcept>
 #include <vector>
@@ -257,7 +258,7 @@ bool primitiveRosMessageToString(
   } else if (msg_type == "std_msgs/msg/Float64") {
     std_msgs::msg::Float64 msg;
     deserializeRosMessage(*serialized_msg, msg);
-    primitive = std::to_string(msg.data);
+    primitive = fmt::format("{}", msg.data);
   } else if (msg_type == "std_msgs/msg/UInt8MultiArray") {
     std_msgs::msg::UInt8MultiArray msg;
     deserializeRosMessage(*serialized_msg, msg);
